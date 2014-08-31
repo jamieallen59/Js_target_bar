@@ -40,24 +40,24 @@ describe("TargetBar", function() {
 
 
   describe("Donation progress", function(){
-    it("displays the donation progress as a %", function(){
+    it("displays the donation progress %", function(){
       targetbar.amount = 40;
-      expect(targetbar.percentage()).toEqual("40%");
+      expect(targetbar.percentage()).toEqual(40);
     })
 
     it("needs encouragement if < 30% of target raised", function(){
       targetbar.amount = 29;
-      expect(targetbar.progress()).toEqual("Struggling");
+      expect(targetbar.progress()).toEqual("struggling");
     });
 
-    it("is doing ok if between 30% and 65%", function(){
+    it("is going ok if between 30% and 65%", function(){
       targetbar.amount = 56;
-      expect(targetbar.progress()).toEqual("Steady");
+      expect(targetbar.progress()).toEqual("steady");
     });
 
-    it("is doing great if > 75% of target raised", function(){
+    it("is going great if > 75% of target raised", function(){
       targetbar.amount = 82;
-      expect(targetbar.progress()).toEqual("Great");
+      expect(targetbar.progress()).toEqual("great");
     });
   });
 });
