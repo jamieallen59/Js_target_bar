@@ -8,19 +8,62 @@
 
 <body>
 
-	<div class="progress-wrap progress" data-progress-percent="25">
-  	<div class="progress-bar progress">
-  	</div>
-	</div>
+	<section class="progress-bar-container">
+		<div class="progress-wrap progress" data-progress-percent="25">
+	  	<div class="progress-bar progress">
+	  	</div>
+		</div>
+	</section>
 
-	Donate: 
-						<input type='text' name='donation-amount'>
-						<input type="submit" value="Submit">
+    <span class='targetbar'></span>
+    <button>^</button>
+    <button>!</button>
+
+    Donate: <input type='text' name='donation-amount'>
+            <input type="submit" value="Submit">
+
+    <section class="target-bar-container">
+        <div class="target-wrap progress" data-progress-percent="75">
+        <div class="target-bar progress">
+        </div>
+        </div>
+    </section>
 				
-
 
 	<script src='src/TargetBar.js'></script>
 	<script src='https://code.jquery.com/jquery-2.0.3.min.js'></script>
+    <script>
+
+    moveProgressBar();
+    $(window).resize(function() {
+        moveProgressBar();
+    });
+
+    function moveProgressBar() {
+        var targetbar = new TargetBar(200, 500);
+        var currentPercentage = targetbar.percentage()
+            console.log(currentPercentage)
+        var status = targetbar.progress()
+            console.log(status)
+      // Whatever is in progress-wrap, divide it by 100
+        var getPercentTwo = (currentPercentage) / 100;
+            console.log(getPercentTwo);
+        var getTargetWrapHeight = $('.target-wrap').height();
+            console.log(getTargetWrapHeight);
+        var progressTotalTwo = getPercentTwo * getTargetWrapHeight;
+            console.log(progressTotalTwo);
+        var animationLength = 2500;
+        
+        // on page load, animate percentage bar to data percentage length
+        // .stop() used to prevent animation queueing
+        $('.target-bar').stop().animate({
+            bottom: progressTotalTwo
+        }, animationLength);
+    }
+    </script>
+
+
+
 	<script>
     moveProgressBar();
     $(window).resize(function() {
@@ -28,16 +71,16 @@
     });
 
     function moveProgressBar() {
-      console.log("moveProgressBar");
+      // Whatever is in progress-wrap, divide it by 100
         var getPercent = ($('.progress-wrap').data('progress-percent') / 100);
-        var getProgressWrapWidth = $('.progress-wrap').width();
-        var progressTotal = getPercent * getProgressWrapWidth;
+        var getProgressWrapHeight = $('.progress-wrap').height();
+        var progressTotal = getPercent * getProgressWrapHeight;
         var animationLength = 2500;
         
         // on page load, animate percentage bar to data percentage length
         // .stop() used to prevent animation queueing
         $('.progress-bar').stop().animate({
-            left: progressTotal
+            bottom: progressTotal
         }, animationLength);
     }
     </script>

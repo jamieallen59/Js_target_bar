@@ -1,6 +1,35 @@
+.target-bar-container {
+  width: 10%;
+}
+
 .progress {
-  width: 100%;
-  height: 50px;
+  width: 60px;
+  height: 300px;
+}
+
+.target-wrap {
+  background: #f80;
+  margin: 20px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.target-bar {
+    background: #ddd;
+    left: 0;
+    position: absolute;
+    bottom: 0;
+  }
+
+/*----- Progress Bar ----*/
+
+.progress-bar-container {
+  width: 10%;
+}
+
+.progress {
+  width: 60px;
+  height: 300px;
 }
 
 .progress-wrap {
@@ -14,5 +43,5 @@
     background: #ddd;
     left: 0;
     position: absolute;
-    top: 0;
+    bottom: 0;
   }

@@ -20,7 +20,7 @@ TargetBar.prototype.adjustTarget = function(targetAddition) {
 };
 
 TargetBar.prototype.percentage = function() {
-	var progress = (this.amount / 100) * this.targetAmount;
+	var progress = (100 / this.targetAmount) * this.amount;
 	return progress
 };
 
@@ -29,3 +29,5 @@ TargetBar.prototype.progress = function() {
 	if(this.percentage() > 75) return "great";
 	return "steady"
 };
+
+
