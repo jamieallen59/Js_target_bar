@@ -4,7 +4,7 @@ function TargetBar(moneyRaised, targetAmount) {
 }
 
 TargetBar.prototype.addMoney = function(moneyDonated) {
-	if(this.amount + moneyDonated < this.targetAmount) {
+	if(this.amount + moneyDonated <= this.targetAmount) {
 		this.amount += moneyDonated;
 	}
 };

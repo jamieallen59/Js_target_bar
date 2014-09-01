@@ -20,28 +20,3 @@
     position: absolute;
     bottom: 0;
   }
-
-/*----- Progress Bar ----*/
-
-.progress-bar-container {
-  width: 10%;
-}
-
-.progress {
-  width: 60px;
-  height: 300px;
-}
-
-.progress-wrap {
-  background: #f80;
-  margin: 20px 0;
-  overflow: hidden;
-  position: relative;
-}
-
-.progress-bar {
-    background: #ddd;
-    left: 0;
-    position: absolute;
-    bottom: 0;
-  }
