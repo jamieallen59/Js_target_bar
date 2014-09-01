@@ -14,8 +14,13 @@
         </div>
         </div>
     </section>
+    <h1>
+        £<span class='target-amount'></span>
+    </h1>
+    <h3>
+        £<span class='money-raised'></span>
+    </h3>
 
-    <span class='targetbar'></span>
     <button class='increase-donation'>^</button>
     <button class='decrease-donation'>!</button>
 
@@ -33,31 +38,41 @@
 
         function moveProgressBar() {
             var targetbar = new TargetBar(200, 500);
-            var currentPercentage = targetbar.percentage()
-            var status = targetbar.progress()
-                console.log(status)
-          // Whatever is in progress-wrap, divide it by 100
-            var getPercent = (currentPercentage) / 100;
+
+            var getPercent = (targetbar.percentage()) / 100;
             var getTargetWrapHeight = $('.target-wrap').height();
             var progressTotal = getPercent * getTargetWrapHeight;
             var animationLength = 2500;
+
+            // Display target amount
+            $('.target-amount').text(targetbar.targetAmount);
+            // Display money raised so far
+            $('.money-raised').text(targetbar.amount);
+            // Add current progress as a class to indicate colour of the bar
+            $('.target-wrap').addClass(targetbar.progress())
             
             $('.increase-donation').on('click', function() {
                 targetbar.addMoney(10);
-                    console.log(targetbar)
+                // Update amount
+                $('.money-raised').text(targetbar.amount);
+                // Update class to change colour of bar
+                $('.target-wrap').attr('class', 'target-wrap progress').addClass(targetbar.progress())
+                // Update position of bar
                 $('.target-bar').animate({
                     bottom: '+=2%'
                 }, 300);
             });
-            
+
             $('.decrease-donation').on('click', function() {
                 targetbar.subtractMoney(10);
-                    console.log(targetbar)
+                $('.money-raised').text(targetbar.amount);
+                $('.target-wrap').attr('class', 'target-wrap progress').addClass(targetbar.progress())
                 $('.target-bar').animate({
                     bottom: '-=2%'
                 }, 300);
             });
-            // on page load, animate percentage bar to data percentage length
+
+            // on page load, animate percentage bar to current donation percentage
             // .stop() used to prevent animation queueing
             $('.target-bar').stop().animate({
                 bottom: progressTotal
@@ -65,6 +80,5 @@
         }
 
     </script>
-
 
 </body>

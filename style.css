@@ -8,7 +8,6 @@
 }
 
 .target-wrap {
-  background: #f80;
   margin: 20px 0;
   overflow: hidden;
   position: relative;
@@ -20,3 +19,13 @@
     position: absolute;
     bottom: 0;
   }
+
+.struggling {
+  background: #CC3333;
+}
+.steady {
+  background: #E8942C;
+}
+.great {
+  background: #2D8735;
+}
