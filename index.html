@@ -2,11 +2,27 @@
 
 <head>
 	<title>JS Loading Bar</title>
+    <script src='https://code.jquery.com/jquery-2.0.3.min.js'></script>
+    <script src="modals/jquery.modal.js" type="text/javascript" charset="utf-8"></script>
 	<meta charset="utf8">
 	<link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="modals/jquery.modal.css" type="text/css" media="screen" />
+    
 </head>
 
 <body>
+
+     <!-- Modal HTML embedded directly into document -->
+      <div id="ex1" style="display:none;">
+        <p>Thanks for clicking.  That felt good.  <a href="#" rel="modal:close">Close</a> or press ESC</p>
+      </div>
+
+      <!-- Link to open the modal -->
+      <p><a href="#ex1" class='modal-button' >Open Modal</a></p>
+
+
+
+
 
     <section class="target-bar-container">
         <div class="target-wrap progress" data-progress-percent="">
@@ -29,8 +45,18 @@
 				
 
 	<script src='src/TargetBar.js'></script>
-	<script src='https://code.jquery.com/jquery-2.0.3.min.js'></script>
     <script>
+        $(document).ready(function(){
+
+            $(".modal-button").on('click', function(){
+                $('#ex1').modal({
+                    fadeDuration: 500,
+                    fadeDelay: 0.30
+                });
+            });
+        });
+
+
         moveProgressBar();
         $(window).resize(function() {
             moveProgressBar();
@@ -40,8 +66,8 @@
             var targetbar = new TargetBar(200, 500);
 
             var getPercent = (targetbar.percentage()) / 100;
-            var getTargetWrapHeight = $('.target-wrap').height();
-            var progressTotal = getPercent * getTargetWrapHeight;
+            var getTargetWrapWidth = $('.target-wrap').width();
+            var progressTotal = getPercent * getTargetWrapWidth;
             var animationLength = 2500;
 
             // Display target amount
@@ -59,7 +85,7 @@
                 $('.target-wrap').attr('class', 'target-wrap progress').addClass(targetbar.progress())
                 // Update position of bar
                 $('.target-bar').animate({
-                    bottom: '+=2%'
+                    left: '+=2%'
                 }, 300);
             });
 
@@ -68,14 +94,14 @@
                 $('.money-raised').text(targetbar.amount);
                 $('.target-wrap').attr('class', 'target-wrap progress').addClass(targetbar.progress())
                 $('.target-bar').animate({
-                    bottom: '-=2%'
+                    left: '-=2%'
                 }, 300);
             });
 
             // on page load, animate percentage bar to current donation percentage
             // .stop() used to prevent animation queueing
             $('.target-bar').stop().animate({
-                bottom: progressTotal
+                left: progressTotal
             }, animationLength);
         }
 
