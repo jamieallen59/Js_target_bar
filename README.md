@@ -26,3 +26,5 @@ open index.html
 cd Js-target-bar
 open SpecRunner.html
 ```
+
+(I was also playing around with building modals into our site, hence the "Open Modal" button at the bottom. It should all work though!)

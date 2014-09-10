@@ -11,37 +11,25 @@
 </head>
 
 <body>
-
-     <!-- Modal HTML embedded directly into document -->
-      <div id="ex1" style="display:none;">
-        <p>Thanks for clicking.  That felt good.  <a href="#" rel="modal:close">Close</a> or press ESC</p>
-      </div>
-
-      <!-- Link to open the modal -->
-      <p><a href="#ex1" class='modal-button' >Open Modal</a></p>
-
-
-
-
-
     <section class="target-bar-container">
         <div class="target-wrap progress" data-progress-percent="">
         <div class="target-bar progress">
         </div>
         </div>
     </section>
-    <h1>
-        £<span class='target-amount'></span>
-    </h1>
-    <h3>
-        £<span class='money-raised'></span>
-    </h3>
+    <h1>£<span class='target-amount'></span></h1>
+    <h3>£<span class='money-raised'></span></h3>
 
     <button class='increase-donation'>^</button>
     <button class='decrease-donation'>!</button>
 
-    Donate: <input type='text' name='donation-amount'>
-            <input type="submit" value="Submit">
+<!-- Modal HTML embedded directly into document -->
+  <div id="ex1" style="display:none;">
+    <p>Thanks for clicking.  That felt good.  <a href="#" rel="modal:close">Close</a> or press ESC</p>
+  </div>
+
+<!-- Link to open the modal -->
+  <p><a href="#ex1" class='modal-button' >Open Modal</a></p>
 				
 
 	<script src='src/TargetBar.js'></script>
@@ -104,7 +92,6 @@
                 left: progressTotal
             }, animationLength);
         }
-
     </script>
 
 </body>
